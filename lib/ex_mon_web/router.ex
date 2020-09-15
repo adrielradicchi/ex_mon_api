@@ -9,6 +9,7 @@ defmodule ExMonWeb.Router do
     pipe_through :api
 
     resources "/trainers", TrainersController
+    get "/pokemon/:name", PokemonsController, :show
   end
 
   # Enables LiveDashboard only for development
