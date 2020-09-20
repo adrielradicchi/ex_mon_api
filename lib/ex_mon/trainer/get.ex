@@ -20,7 +20,7 @@ defmodule ExMon.Trainer.Get do
 
   defp fetch_trainer(uuid), do: Repo.get(Trainer, uuid)
 
-  defp get_trainer(trainer) when not is_nil(trainer), do: {:ok, trainer}
+  defp get_trainer(trainer) when not is_nil(trainer), do: {:ok, Repo.preload(trainer, :pokemon)}
   defp get_trainer(_trainer), do: {:error, %{message: "Trainer not found", status: 404}}
 
 end

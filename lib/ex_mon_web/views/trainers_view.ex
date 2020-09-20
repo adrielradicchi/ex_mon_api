@@ -1,7 +1,7 @@
 defmodule ExMonWeb.TrainersView do
   use ExMonWeb, :view
 
-  alias ExMon.Trainer
+  alias ExMon.{Trainer, Trainer.Pokemon}
 
   def render("create.json", %{trainer: %Trainer{id: id, name: name, inserted_at: inserted_at}}) do
     %{
@@ -26,10 +26,28 @@ defmodule ExMonWeb.TrainersView do
     }
   end
 
-  def render("show.json", %{trainer: %Trainer{id: id, name: name, inserted_at: inserted_at}}) do
+  def render("show.json", %{trainer: %Trainer{id: id, name: name, pokemon: pokemons, inserted_at: inserted_at}}) do
     %{
       id: id,
       name: name,
+      pokemon: map_pokemons(pokemons),
+      inserted_at: inserted_at
+    }
+  end
+
+  defp map_pokemons(pokemons) do
+    pokemons
+    |> Enum.map(&show_pokemon&1)
+  end
+
+  defp show_pokemon(%Pokemon{id: id, name: name, nickname: nickname, types: types, weight: weight, trainer_id: trainer_id, inserted_at: inserted_at}) do
+    %{
+      id: id,
+      name: name,
+      nickname: nickname,
+      types: types,
+      weight: weight,
+      trainer_id: trainer_id,
       inserted_at: inserted_at
     }
   end
