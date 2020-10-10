@@ -1,19 +1,16 @@
-# ExMon
+# ExMon Web API
 
-To start your Phoenix server:
+This project is register the trainers and pokemons. 
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+It was used the PokeApi (https://pokeapi.co) to find the pokemon and add to trainer
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Used Stack 
+  Elixir            - To write the application
+  Phoenix Framework - To create the web application
+  Tesla             - To access and capture the data from PokeApi
+  Guardian          - To create authentication of the trainer
+  PostgreSQL        - To storage the data
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+This project was write tests to ensure operation of application
 
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+This project was developed in course about Elixir in Udemy with a teacher Rafael Camarda
