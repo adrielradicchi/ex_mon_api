@@ -36,4 +36,6 @@ config :ex_mon, ExMonWeb.Auth.Guardian,
 
 config :ex_mon, ExMonWeb.Auth.Pipeline,
   module: ExMonWeb.Auth.Guardian,
-  error_handler: ExMonWeb.Auth.ErrorHandler
+  error_handler: ExMonWeb.Auth.ErrorHandler,
+  token_type: ["access","refresh"],
+  ttl: {1, :day}
