@@ -38,6 +38,13 @@ defmodule ExMonWeb.ConnCase do
       Ecto.Adapters.SQL.Sandbox.mode(ExMon.Repo, {:shared, self()})
     end
 
-    {:ok, conn: Phoenix.ConnTest.build_conn()}
+    conn = Phoenix.ConnTest.build_conn()
+
+    params = %{name: "Adriel", password: "123456"}
+    {:ok, trainer} = ExMon.create_trainer(params)
+    {:ok, token, _clains} = ExMonWeb.Auth.Guardian.encode_and_sign(trainer)
+
+    conn = Plug.Conn.put_req_header(conn, "authorization", "Bearer #{token}")
+    {:ok, conn: conn}
   end
 end
