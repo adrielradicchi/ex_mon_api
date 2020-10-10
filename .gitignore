@@ -27,5 +27,5 @@ ex_mon-*.tar
 # this depending on your deployment strategy.
 /priv/static/
 
-/.vscode
+/.vscode/
 /.elixir_ls
