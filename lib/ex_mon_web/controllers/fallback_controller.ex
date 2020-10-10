@@ -8,6 +8,13 @@ defmodule ExMonWeb.FallbackController do
     |> render("400.json", result: result) # fazer um mapa de todos os status e redenrizar a pagina certa de cada erro
   end
 
+  def call(conn, {:error, %{status: 401} = result}) do
+    conn
+    |> put_status(:unauthorized)
+    |> put_view(ExMonWeb.ErrorView)
+    |> render("401.json", result: result) # fazer um mapa de todos os status e redenrizar a pagina certa de cada erro
+  end
+
   def call(conn, {:error, %{status: 404} = result}) do
     conn
     |> put_status(:not_found)
